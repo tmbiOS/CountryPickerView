@@ -13,6 +13,11 @@ public protocol CountryPickerViewDelegate: class {
     func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country)
 }
 
+// MARK:- CountryPickerViewDelegate default implementations
+extension CountryPickerViewDelegate {
+    func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {}
+}
+
 public protocol CountryPickerViewDataSource: class {
     /// An array of countries you wish to show at the top of the list.
     /// This is useful if your app is targeted towards people in specific countries.
@@ -39,6 +44,8 @@ public protocol CountryPickerViewDataSource: class {
     /// This determines if a country's phone code is shown alongside the country's name on the list.
     /// e.g Nigeria (+234)
     func showPhoneCodeInList(in countryPickerView: CountryPickerView) -> Bool
+    
+    
 }
 
 // MARK:- CountryPickerViewDataSource default implementations
