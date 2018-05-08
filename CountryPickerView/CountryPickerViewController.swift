@@ -27,10 +27,14 @@ class CountryPickerViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setToolbarHidden(false, animated: true)
         prepareTableItems()
         prepareNavItem()
         prepareSearchBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(false, animated: true)
     }
    
 }
