@@ -14,7 +14,7 @@ public protocol CountryPickerViewDelegate: class {
 }
 
 // MARK:- CountryPickerViewDelegate default implementations
-extension CountryPickerViewDelegate {
+public extension CountryPickerViewDelegate {
     func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {}
 }
 
