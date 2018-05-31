@@ -14,7 +14,7 @@ public struct CountryPickerViewControllerCustomization {
   var cellTextLabelFont: UIFont? = nil
   var cellTextLabelColor: UIColor? = nil
 
-  init (viewForHeaderInSection: UIView? = nil,
+  public init (viewForHeaderInSection: UIView? = nil,
         heightForHeaderInSection: CGFloat? = nil,
         cellTextLabelFont: UIFont? = nil,
         cellTextLabelColor: UIColor? = nil) {
