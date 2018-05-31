@@ -53,6 +53,11 @@ public class CountryPickerView: NibView {
     public var showPhoneCodeInView = true {
         didSet { setup() }
     }
+
+    // Show the country name of the country code on the view.
+    public var showCountryNameInView = false {
+      didSet { setup() }
+    }
     
     /// The spacing between the flag image and the text.
     public var flagSpacingInView: CGFloat {
@@ -93,12 +98,12 @@ public class CountryPickerView: NibView {
     func setup() {
         flagImageView.image = selectedCountry.flag
         if showPhoneCodeInView && showCountryCodeInView {
-            countryDetailsLabel.text = "(\(selectedCountry.code)) \(selectedCountry.phoneCode)"
+            countryDetailsLabel.text = "(\(showCountryNameInView ? selectedCountry.name : selectedCountry.code)) \(selectedCountry.phoneCode)"
             return
         }
         
         if showCountryCodeInView || showPhoneCodeInView {
-            countryDetailsLabel.text = showCountryCodeInView ? selectedCountry.code : selectedCountry.phoneCode
+            countryDetailsLabel.text = showCountryCodeInView ? (showCountryNameInView ? selectedCountry.name : selectedCountry.code) : selectedCountry.phoneCode
         } else {
             countryDetailsLabel.text = nil
         }
