@@ -43,6 +43,10 @@ class DemoViewController: UITableViewController {
             $0?.dataSource = self
         }
 
+        cpvMain.countryPickerViewControllerCustomization = CountryPickerViewControllerCustomization(
+          viewForHeaderInSection: nil, heightForHeaderInSection: 40.0,
+          cellTextLabelFont: UIFont.boldSystemFont(ofSize: 15.0), cellTextLabelColor: .darkGray)
+        cpvMain.showCountryNameInView = true
 
         cpvInternal.delegate = self
         cpvMain.countryDetailsLabel.font = UIFont.systemFont(ofSize: 20)

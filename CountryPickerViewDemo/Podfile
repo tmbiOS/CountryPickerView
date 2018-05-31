@@ -3,6 +3,6 @@ platform :ios, '8.0'
 target 'CountryPickerViewDemo' do
   use_frameworks!
 
-  pod 'CountryPickerView', :git => 'https://github.com/tmbiOS/CountryPickerView'  
+  pod 'CountryPickerView', :git => 'https://github.com/tmbiOS/CountryPickerView', :branch => 'development'
 
 end
