@@ -125,11 +125,13 @@ public class CountryPickerView: NibView {
         let countryVc = CountryPickerViewController(style: .grouped)
         countryVc.countryPickerView = self
         countryVc.countryPickerViewControllerCustomization = countryPickerViewControllerCustomization
-        if let viewController = viewController as? UINavigationController {
+
+        if let viewController = ((viewController as? UISplitViewController)?.viewControllers.first as? UITabBarController)?.selectedViewController as? UINavigationController  {
+            viewController.pushViewController(countryVc, animated: true)
+        } else if let viewController = viewController as? UINavigationController {
             viewController.pushViewController(countryVc, animated: true)
         } else {
-            viewController.present(UINavigationController(rootViewController: countryVc),
-                                   animated: true)
+            viewController.present(UINavigationController(rootViewController: countryVc), animated: true)
         }
     }
     
