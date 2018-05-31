@@ -113,7 +113,6 @@
 				004CA2FC1F705DD600B690B8 /* Frameworks */,
 				004CA2FD1F705DD600B690B8 /* Resources */,
 				D073A94C45743AB4CB4D944D /* [CP] Embed Pods Frameworks */,
-				B81A81F5EA364DFEE7FEEDCA /* [CP] Copy Pods Resources */,
 				509720AE1FDEE189001244B0 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -174,21 +173,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B81A81F5EA364DFEE7FEEDCA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CountryPickerViewDemo/Pods-CountryPickerViewDemo-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D073A94C45743AB4CB4D944D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
