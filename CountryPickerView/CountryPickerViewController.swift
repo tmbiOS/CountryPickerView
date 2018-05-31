@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct CountryPickerViewControllerCustomization {
+public struct CountryPickerViewControllerCustomization {
   var viewForHeaderInSection: UIView? = nil
   var heightForHeaderInSection: CGFloat? = nil
   var cellTextLabelFont: UIFont? = nil

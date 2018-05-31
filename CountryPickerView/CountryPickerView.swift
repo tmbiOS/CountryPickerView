@@ -42,7 +42,7 @@ public class CountryPickerView: NibView {
     @IBOutlet public weak var flagImageView: UIImageView!
     @IBOutlet public weak var countryDetailsLabel: UILabel!
 
-    var countryPickerViewControllerCustomization: CountryPickerViewControllerCustomization?
+    public var countryPickerViewControllerCustomization: CountryPickerViewControllerCustomization?
     
     // Show/Hide the country code on the view.
     public var showCountryCodeInView = true {
