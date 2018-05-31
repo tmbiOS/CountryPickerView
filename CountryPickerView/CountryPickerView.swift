@@ -41,6 +41,8 @@ public class CountryPickerView: NibView {
     @IBOutlet weak var spacingConstraint: NSLayoutConstraint!
     @IBOutlet public weak var flagImageView: UIImageView!
     @IBOutlet public weak var countryDetailsLabel: UILabel!
+
+    var countryPickerViewControllerCustomization: CountryPickerViewControllerCustomization?
     
     // Show/Hide the country code on the view.
     public var showCountryCodeInView = true {
@@ -117,6 +119,7 @@ public class CountryPickerView: NibView {
     public func showCountriesList(from viewController: UIViewController) {
         let countryVc = CountryPickerViewController(style: .grouped)
         countryVc.countryPickerView = self
+        countryVc.countryPickerViewControllerCustomization = countryPickerViewControllerCustomization
         if let viewController = viewController as? UINavigationController {
             viewController.pushViewController(countryVc, animated: true)
         } else {

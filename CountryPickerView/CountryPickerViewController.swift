@@ -8,6 +8,23 @@
 
 import UIKit
 
+struct CountryPickerViewControllerCustomization {
+  var viewForHeaderInSection: UIView? = nil
+  var heightForHeaderInSection: CGFloat? = nil
+  var cellTextLabelFont: UIFont? = nil
+  var cellTextLabelColor: UIColor? = nil
+
+  init (viewForHeaderInSection: UIView? = nil,
+        heightForHeaderInSection: CGFloat? = nil,
+        cellTextLabelFont: UIFont? = nil,
+        cellTextLabelColor: UIColor? = nil) {
+    self.viewForHeaderInSection = viewForHeaderInSection
+    self.heightForHeaderInSection = heightForHeaderInSection
+    self.cellTextLabelFont = cellTextLabelFont
+    self.cellTextLabelColor = cellTextLabelColor
+  }
+}
+
 class CountryPickerViewController: UITableViewController {
     
     fileprivate var searchController: UISearchController?
@@ -24,7 +41,8 @@ class CountryPickerViewController: UITableViewController {
     }
     
     weak var countryPickerView: CountryPickerView!
-    
+    var countryPickerViewControllerCustomization: CountryPickerViewControllerCustomization?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareTableItems()
@@ -143,28 +161,18 @@ extension CountryPickerViewController {
         let name = countryPickerView.showPhoneCodeInList ? "\(country.name) (\(country.phoneCode))" : country.name
         cell.imageView?.image = country.flag
         cell.textLabel?.text = name
+
+        if let font = countryPickerViewControllerCustomization?.cellTextLabelFont {
+          cell.textLabel?.font = font
+        }
+
+        if let textColor = countryPickerViewControllerCustomization?.cellTextLabelColor {
+          cell.textLabel?.textColor = textColor
+        }
+
         cell.accessoryType = country == countryPickerView.selectedCountry ? .checkmark : .none
         cell.separatorInset = .zero
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return isSearchMode ? nil : sectionsTitles[section]
-    }
-    
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        if isSearchMode {
-            return nil
-        } else {
-            if hasPreferredSection {
-                return Array<String>(sectionsTitles.dropFirst())
-            }
-            return sectionsTitles
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        return sectionsTitles.index(of: title)!
     }
 }
 
@@ -173,9 +181,19 @@ extension CountryPickerViewController {
 extension CountryPickerViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+
+        guard countryPickerViewControllerCustomization?.viewForHeaderInSection == nil else {
+          return
+        }
+
         if let header = view as? UITableViewHeaderFooterView {
             header.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         }
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+      return countryPickerViewControllerCustomization?.viewForHeaderInSection ?? nil
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -194,6 +212,34 @@ extension CountryPickerViewController {
         } else {
             navigationController?.popViewController(animated: true, completion: completion)
         }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+
+      guard countryPickerViewControllerCustomization?.viewForHeaderInSection == nil else {
+        return nil
+      }
+
+      return isSearchMode ? nil : sectionsTitles[section]
+    }
+
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+      if isSearchMode {
+        return nil
+      } else {
+        if hasPreferredSection {
+          return Array<String>(sectionsTitles.dropFirst())
+        }
+        return sectionsTitles
+      }
+    }
+
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+      return sectionsTitles.index(of: title)!
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+      return countryPickerViewControllerCustomization?.heightForHeaderInSection ?? 44
     }
 }
 
