@@ -2,20 +2,21 @@ PODS:
   - CountryPickerView (2.1.0)
 
 DEPENDENCIES:
-  - CountryPickerView (from `https://github.com/tmbiOS/CountryPickerView`)
+  - CountryPickerView (from `https://github.com/tmbiOS/CountryPickerView`, branch `development`)
 
 EXTERNAL SOURCES:
   CountryPickerView:
+    :branch: development
     :git: https://github.com/tmbiOS/CountryPickerView
 
 CHECKOUT OPTIONS:
   CountryPickerView:
-    :commit: 54dd9ab3216ac72cf6dd8651f4475ba7077f41df
+    :commit: add91fcc19576baf83b3979bbad2862c8b8bdca5
     :git: https://github.com/tmbiOS/CountryPickerView
 
 SPEC CHECKSUMS:
   CountryPickerView: db05b3dbd2c6bd4c04c388ee53b5bedf8d84a5fd
 
-PODFILE CHECKSUM: 9c0fa8660f68f6f0d533fa4eb243b3ec1e49ac2e
+PODFILE CHECKSUM: 0ae16fe07a75c7438c33a42db0fb2e5987f73f03
 
 COCOAPODS: 1.5.2

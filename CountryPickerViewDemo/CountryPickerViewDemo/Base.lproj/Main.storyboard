@@ -241,11 +241,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFF-sE-QnX" customClass="CountryPickerView" customModule="CountryPickerView">
-                                                    <rect key="frame" x="37.5" y="30" width="300" height="30"/>
+                                                    <rect key="frame" x="37.5" y="30" width="300" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="300" id="8n2-HY-BNq"/>
-                                                        <constraint firstAttribute="height" constant="30" id="KtA-Kd-L2H"/>
+                                                        <constraint firstAttribute="height" constant="15" id="KtA-Kd-L2H"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>

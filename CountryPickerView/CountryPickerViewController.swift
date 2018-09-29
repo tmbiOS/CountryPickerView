@@ -25,7 +25,7 @@ public struct CountryPickerViewControllerCustomization {
   }
 }
 
-class CountryPickerViewController: UITableViewController {
+public class CountryPickerViewController: UITableViewController {
     
     fileprivate var searchController: UISearchController?
     fileprivate var searchResults = [Country]()
@@ -43,14 +43,14 @@ class CountryPickerViewController: UITableViewController {
     weak var countryPickerView: CountryPickerView!
     var countryPickerViewControllerCustomization: CountryPickerViewControllerCustomization?
 
-    override func viewDidLoad() {
+  override public func viewDidLoad() {
         super.viewDidLoad()
         prepareTableItems()
         prepareNavItem()
         prepareSearchBar()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -144,15 +144,15 @@ extension CountryPickerViewController {
 //MARK:- UITableViewDataSource
 extension CountryPickerViewController {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+  override public func numberOfSections(in tableView: UITableView) -> Int {
         return isSearchMode ? 1 : sectionsTitles.count
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isSearchMode ? searchResults.count : countries[sectionsTitles[section]]!.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
             ?? UITableViewCell(style: .default, reuseIdentifier: "cell")
         let country = isSearchMode ? searchResults[indexPath.row]
@@ -180,7 +180,7 @@ extension CountryPickerViewController {
 //MARK:- UITableViewDelegate
 extension CountryPickerViewController {
 
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+  override public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 
         guard countryPickerViewControllerCustomization?.viewForHeaderInSection == nil else {
           return
@@ -191,12 +191,12 @@ extension CountryPickerViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+  override public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
       return countryPickerViewControllerCustomization?.viewForHeaderInSection ?? nil
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let country = isSearchMode ? searchResults[indexPath.row]
             : countries[sectionsTitles[indexPath.section]]![indexPath.row]
@@ -214,7 +214,7 @@ extension CountryPickerViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 
       guard countryPickerViewControllerCustomization?.viewForHeaderInSection == nil else {
         return nil
@@ -223,7 +223,7 @@ extension CountryPickerViewController {
       return isSearchMode ? nil : sectionsTitles[section]
     }
 
-    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+  override public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
       if isSearchMode {
         return nil
       } else {
@@ -234,11 +234,11 @@ extension CountryPickerViewController {
       }
     }
 
-    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+  override public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
       return sectionsTitles.index(of: title)!
     }
 
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  override public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
       return countryPickerViewControllerCustomization?.heightForHeaderInSection ?? 44
     }
 }
