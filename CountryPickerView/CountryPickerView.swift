@@ -77,7 +77,7 @@ public class CountryPickerView: NibView {
         get {
             return _selectedCountry
                 ?? countries.first(where: { $0.code == Locale.current.regionCode })
-                ?? countries.first(where: { $0.code == "NG" })!
+                ?? countries.first(where: { $0.code == "CH" })!
         }
         set {
             _selectedCountry = newValue

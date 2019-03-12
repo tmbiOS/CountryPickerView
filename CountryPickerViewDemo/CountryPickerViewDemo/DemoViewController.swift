@@ -115,7 +115,7 @@ extension DemoViewController: CountryPickerViewDataSource {
     func preferredCountries(in countryPickerView: CountryPickerView) -> [Country] {
         if countryPickerView.tag == cpvMain.tag && showPreferredCountries.isOn {
             var countries = [Country]()
-            ["NG", "US", "GB"].forEach { code in
+            ["CH"].forEach { code in
                 if let country = countryPickerView.getCountryByCode(code) {
                     countries.append(country)
                 }
